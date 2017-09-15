@@ -9,17 +9,21 @@
 
     <!--<http pattern="/css/**" security="none" />-->
 
-    <http auto-config="true" use-expressions="false">
-        <intercept-url pattern="/secure/**" access="ROLE_USER" />
-        <intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+    <http auto-config="true">
+        <intercept-url pattern="/secure/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
     </http>
 
-    <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin" password="adminpassword" authorities="ROLE_USER, ROLE_ADMIN" />
-                <user name="user" password="userpassword" authorities="ROLE_USER" />
-            </user-service>
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+            <password-encoder ref="encoder"/>
         </authentication-provider>
     </authentication-manager>
+
+    <beans:bean id="userDetailsServiceImpl"
+                class="com.home.service.UserDetailsServiceImpl"/>
+
+    <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <beans:constructor-arg name="strength" value="11"/>
+    </beans:bean>
 </beans:beans>
