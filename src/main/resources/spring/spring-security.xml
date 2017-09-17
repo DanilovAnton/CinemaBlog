@@ -7,23 +7,25 @@
                     http://www.springframework.org/schema/security
                     http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
-    <!--<http pattern="/css/**" security="none" />-->
+    <http pattern="/css/**" security="none" />
 
     <http auto-config="true">
-        <intercept-url pattern="/secure/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
-        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/main/**" access="hasRole('ROLE_USER')"/>
+
+        <form-login login-page="/login"
+                    default-target-url="/main"
+                    authentication-failure-url="/login?error"
+                    username-parameter="username"
+                    password-parameter="password"/>
+
+        <logout logout-success-url="/login?logout"/>
     </http>
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsServiceImpl">
-            <password-encoder ref="encoder"/>
         </authentication-provider>
     </authentication-manager>
 
     <beans:bean id="userDetailsServiceImpl"
                 class="com.home.service.UserDetailsServiceImpl"/>
-
-    <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-        <beans:constructor-arg name="strength" value="11"/>
-    </beans:bean>
 </beans:beans>

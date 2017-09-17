@@ -14,12 +14,17 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-security.version>4.2.3.RELEASE</spring-security.version>
         <spring.version>4.3.11.RELEASE</spring.version>
+
         <spring-data-jpa.version>1.11.7.RELEASE</spring-data-jpa.version>
-        <hibernate-core.version>5.2.10.Final</hibernate-core.version>
-        <mysql.version>5.1.38</mysql.version>
+        <!--на версии 5.2.11.Final трабла с инсертам в таблицу-->
+        <hibernate.version>4.3.11.Final</hibernate.version>
+
+       <mysql.version>5.1.38</mysql.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <jstl.version>1.2</jstl.version>
         <logback.version>1.2.3</logback.version>
+        <bootstrap.version>3.3.7</bootstrap.version>
+        <jquery.version>3.2.1</jquery.version>
     </properties>
 
     <dependencies>
@@ -57,8 +62,8 @@
         <!--Hibernate-->
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate-core.version}</version>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <!--MySQL-->
@@ -66,6 +71,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <!--DBCP-->
@@ -88,6 +94,6 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
-    </dependencies>
 
+    </dependencies>
 </project>

@@ -17,17 +17,17 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-//    @Autowired
-//    private RoleDao roleDao;
-//
-//    @Override
-//    public void save(User user) {
+    @Autowired
+    private RoleDao roleDao;
+
+    @Override
+    public void save(User user) {
 //        user.setPassword(user.getPassword());
-//        Set<Role> roles = new HashSet<>();
-//        roles.add(roleDao.getOne(1L));
-//        user.setRoles(roles);
-//        userDao.save(user);
-//    }
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleDao.getOne(1L));
+        user.setRoles(roles);
+        userDao.save(user);
+    }
 
     @Override
     public User findByUsername(String username) {
