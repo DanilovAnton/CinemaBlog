@@ -54,7 +54,7 @@ INSERT INTO users VALUES (1, 'admin', 'admin', 'admin@admin.ru');
 INSERT INTO roles VALUES (1, 'ROLE_USER');
 INSERT INTO roles VALUES (2, 'ROLE_ADMIN');
 
-INSERT INTO user_roles VALUES (1, 2);
+INSERT INTO user_roles VALUES (1, 1);
 
 /*insert into table posts*/
 INSERT INTO posts VALUES (1, 1, 'title1', 'text1', 't1');

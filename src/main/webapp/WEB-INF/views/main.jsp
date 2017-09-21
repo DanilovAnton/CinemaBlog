@@ -11,11 +11,12 @@
 <c:if test="${!empty listPost}">
     <table>
         <tr>
-            <th>Название поста</th>
+            <th>Title</th>
         </tr>
         <c:forEach items="${listPost}" var="post">
             <tr>
                 <td>${post.title}</td>
+                <td>${post.user.username}</td>
             </tr>
         </c:forEach>
     </table>
