@@ -7,5 +7,18 @@
 </head>
 <body>
 <h2>main</h2>
+
+<c:if test="${!empty listPost}">
+    <table>
+        <tr>
+            <th>Название поста</th>
+        </tr>
+        <c:forEach items="${listPost}" var="post">
+            <tr>
+                <td>${post.title}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</c:if>
 </body>
 </html>

@@ -6,10 +6,10 @@ import javax.persistence.*;
 @Table (name = "comments")
 public class Comments {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (name = "id_post")
+    @Column (name = "post_id")
     private Long id_post;
 
     @Column (name = "text")
