@@ -1,6 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
     <title>Main page</title>
@@ -15,8 +17,8 @@
         </tr>
         <c:forEach items="${listPost}" var="post">
             <tr>
-                <td>${post.title}</td>
-                <td>${post.user.username}</td>
+                <td><a href="${contextPath}/post/${post.id}">${post.title}</a></td>
+                <td><a href="${contextPath}/user/${post.user.id}">${post.user.username}</a></td>
             </tr>
         </c:forEach>
     </table>

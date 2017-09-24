@@ -1,8 +1,8 @@
 package com.home.dao;
 
-import com.home.model.Comments;
+import com.home.model.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CommentDao extends JpaRepository<Comments, Integer> {
+public interface CommentDao extends JpaRepository<Comment, Integer> {
 
 }

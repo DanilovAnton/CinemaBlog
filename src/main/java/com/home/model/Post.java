@@ -1,15 +1,16 @@
 package com.home.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+//@NamedEntityGraph(name = "Post.comments", attributeNodes = @NamedAttributeNode("comments"))
 @Table(name = "posts")
 public class Post {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "title")
     private String title;
@@ -21,17 +22,17 @@ public class Post {
     private String tags;
 
     @OneToMany(mappedBy = "post")
-    private Set<Comments> comments;
+    private Set<Comment> comments = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,11 +60,11 @@ public class Post {
         this.tags = tags;
     }
 
-    public Set<Comments> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(Set<Comments> comments) {
+    public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
 
