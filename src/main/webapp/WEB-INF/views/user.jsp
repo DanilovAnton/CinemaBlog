@@ -5,17 +5,10 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>Title</title>
+    <title>user</title>
 </head>
 <body>
- <h2>${post.title}</h2>
-<h2>${post.user.username}</h2>
-<h2>${post.tags}</h2>
-<h2>${post.text}</h2>
-
-<h1>comments</h1>
-<c:forEach items="${post.comments}" var="comment">
-    <h1>${comment.text}</h1>
-</c:forEach>
+<h2>Name: ${user.username}</h2>
+<h1>Count posts: ${size}</h1>
 </body>
 </html>

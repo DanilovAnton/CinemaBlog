@@ -1,6 +1,7 @@
 package com.home.service;
 
 import com.home.model.Post;
+import com.home.tools.ViewPost;
 
 import java.util.List;
 
@@ -9,4 +10,5 @@ public interface PostService {
 
     Post findPostById(Long id);
 
+    List<ViewPost> viewPosts(List<Post> posts, String username);
 }

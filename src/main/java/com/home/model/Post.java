@@ -1,13 +1,13 @@
 package com.home.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-//@NamedEntityGraph(name = "Post.comments", attributeNodes = @NamedAttributeNode("comments"))
 @Table(name = "posts")
-public class Post {
+public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +21,7 @@ public class Post {
     @Column(name = "tags")
     private String tags;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
     private Set<Comment> comments = new HashSet<>();
 
     @ManyToOne

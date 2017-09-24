@@ -9,14 +9,11 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (name = "post_id")
-    private Long id_post;
-
     @Column (name = "text")
     private String text;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "post_id")
     private Post post;
 
     public Long getId() {
@@ -27,13 +24,6 @@ public class Comment {
         this.id = id;
     }
 
-    public Long getId_post() {
-        return id_post;
-    }
-
-    public void setId_post(Long id_post) {
-        this.id_post = id_post;
-    }
 
     public String getText() {
         return text;
