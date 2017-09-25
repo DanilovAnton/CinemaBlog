@@ -9,6 +9,8 @@ public interface PostService {
     List<Post> getAll();
 
     Post findPostById(Long id);
+    
+    void remove(Long id);
 
     List<ViewPost> viewPosts(List<Post> posts, String username);
 }

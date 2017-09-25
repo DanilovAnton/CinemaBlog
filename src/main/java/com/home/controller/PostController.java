@@ -50,4 +50,17 @@ public class PostController {
         return "post";
     }
 
+    @RequestMapping(value = "/main/post/edit/{id}")
+    public String updatePost(@PathVariable Long id, Model model){
+        Post post = this.postService.findPostById(id);
+        model.addAttribute("post", post);
+        return "edit";
+    }
+
+    @RequestMapping(value = "/main/post/remove/{id}")
+    public String removePost(@PathVariable Long id){
+        this.postService.remove(id);
+        return "redirect:/main";
+    }
+
 }
