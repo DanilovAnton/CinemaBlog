@@ -9,4 +9,5 @@ public interface PostDao extends JpaRepository<Post, Long> {
 
     @Query("select t from Post t where t.id = ?1")
     Post findPostById(Long id);
+
 }

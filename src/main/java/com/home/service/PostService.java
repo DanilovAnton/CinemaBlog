@@ -11,6 +11,7 @@ public interface PostService {
     Post findPostById(Long id);
     
     void remove(Long id);
+    void save(Post post);
 
     List<ViewPost> viewPosts(List<Post> posts, String username);
 }

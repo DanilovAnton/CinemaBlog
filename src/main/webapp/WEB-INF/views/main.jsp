@@ -10,6 +10,8 @@
 <body>
 <h2>main</h2>
 
+<button><a href="${contextPath}/main/create">Create Post</a></button>
+
 <c:if test="${!empty listPost}">
     <table>
         <tr>

@@ -55,4 +55,9 @@ public class PostServiceImpl implements PostService {
 
         return viewPost;
     }
+
+    @Override
+    public void save(Post post) {
+        this.postDao.save(post);
+    }
 }
