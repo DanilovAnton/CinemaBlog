@@ -57,6 +57,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    @Transactional
     public void save(Post post) {
         this.postDao.save(post);
     }

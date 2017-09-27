@@ -75,9 +75,9 @@ public class PostController {
 
         postForm.setUser(this.userService.findByUsername(username));
 
-        postForm.setComments(null);
+//        postForm.setComments(null);
         this.postService.save(postForm);
-        return "create";
+        return "redirect:/main";
     }
 
 
