@@ -10,17 +10,15 @@ public class ViewPost {
 
     private String author;
 
-    private String deleteLink;
+    private boolean change;
 
-    private String updateLink;
 
-    public ViewPost(Long id, String title, String text, String author, String deleteLink, String updateLink) {
+    public ViewPost(Long id, String title, String text, String author, boolean change) {
         this.id = id;
         this.title = title;
         this.text = text;
         this.author = author;
-        this.deleteLink = deleteLink;
-        this.updateLink = updateLink;
+        this.change = change;
     }
 
     public Long getId() {
@@ -39,11 +37,7 @@ public class ViewPost {
         return author;
     }
 
-    public String getDeleteLink() {
-        return deleteLink;
-    }
-
-    public String getUpdateLink() {
-        return updateLink;
+    public boolean isChange() {
+        return change;
     }
 }

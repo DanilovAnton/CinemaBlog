@@ -8,10 +8,24 @@
     <title>Title</title>
 </head>
 <body>
- <h2>${post.title}</h2>
-<h2>${post.user.username}</h2>
-<h2>${post.tags}</h2>
-<h2>${post.text}</h2>
+    <form:form modelAttribute="postForm" method="post" action="${contextPath}/main/post/${postForm.id}">
+        <spring:bind path="id">
+            <input type="hidden" value="${postForm.id}"><br/>
+        </spring:bind>
+        <spring:bind path="title">
+            <input type="text" value="${postForm.title}"/><br/>
+        </spring:bind>
+        <spring:bind path="text">
+            <input type="text" value="${postForm.text}"/><br/>
+        </spring:bind>
+        <spring:bind path="tags">
+            <input type="text" value="${postForm.tags}"/><br/>
+        </spring:bind>
+        <c:if test="${change}">
+            <input type="submit" name="action" value="update"/><br/>
+            <input type="submit" name="action" value="remove"/>
+        </c:if>
+    </form:form>
 
 <h1>comments</h1>
 <c:forEach items="${post.comments}" var="comment">

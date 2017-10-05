@@ -36,24 +36,9 @@ public class PostServiceImpl implements PostService {
 
 
     @Override
-    public List<ViewPost> viewPosts(List<Post> posts, String username) {
-
-        List<ViewPost> viewPost = new ArrayList<>();
-        String deleteLink = null;
-        String updateLink = null;
-
-        for (Post post : posts){
-            if (post.getUser().getUsername().equals(username)){
-                deleteLink = "/main/post/remove/" + post.getId();
-                updateLink = "/main/edit/" + post.getId();
-            }
-            viewPost.add(new ViewPost(post.getId(), post.getTitle(), post.getText(), post.getUser().getUsername(), deleteLink, updateLink));
-            deleteLink = null;
-            updateLink = null;
-        }
-
-
-        return viewPost;
+    public ViewPost viewPost(Post post, String username) {
+        return  new ViewPost(post.getId(), post.getTitle(), post.getText(),
+                post.getUser().getUsername(), post.getUser().getUsername().equals(username));
     }
 
     @Override

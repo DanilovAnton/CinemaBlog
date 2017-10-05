@@ -20,19 +20,11 @@
         <c:forEach items="${listPost}" var="post">
             <tr>
                 <td>
-                    <a href="${contextPath}/post/${post.id}">${post.title}</a>
+                    <a href="${contextPath}/main/post/${post.id}">${post.title}</a>
                 </td>
                 <td>
-                    <a href="${contextPath}/user/${post.author}">${post.author}</a>
+                    <a href="${contextPath}/main/user/${post.user.username}">${post.user.username}</a>
                 </td>
-                <c:if test="${!empty post.deleteLink}">
-                    <td>
-                        <a href="${post.deleteLink}">delete</a>
-                    </td>
-                    <td>
-                        <a href="${post.updateLink}">update</a>
-                    </td>
-                </c:if>
             </tr>
         </c:forEach>
     </table>

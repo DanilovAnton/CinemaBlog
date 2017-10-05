@@ -13,5 +13,5 @@ public interface PostService {
     void remove(Long id);
     void save(Post post);
 
-    List<ViewPost> viewPosts(List<Post> posts, String username);
+    public ViewPost viewPost(Post post, String username);
 }
