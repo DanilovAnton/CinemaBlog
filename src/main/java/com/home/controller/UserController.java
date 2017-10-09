@@ -38,18 +38,13 @@ public class UserController {
         return "welcome";
     }
 
-    @RequestMapping(value = "user/{username}", method = RequestMethod.GET)
+    @RequestMapping(value = "main/user/{username}", method = RequestMethod.GET)
     public String user(@PathVariable String username, Model model){
         User user = userService.findByUsername(username);
         int size = user.getPosts().size();
         model.addAttribute("user", user);
         model.addAttribute("size", size);
         return "user";
-    }
-
-    @RequestMapping(value = "useredit/{id}", method = RequestMethod.GET)
-    public String editPost(Model model){
-        return "";
     }
 
 }

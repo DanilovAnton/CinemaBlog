@@ -25,6 +25,13 @@ public class CommentServiceImpl implements CommentService {
         return this.commentDao.getOne(id);
     }
 
+
+    @Override
+    @Transactional
+    public void deleteComment(Long id) {
+        this.commentDao.delete(id);
+    }
+
     @Override
     @Transactional
     public void saveComment(Comment comment) {

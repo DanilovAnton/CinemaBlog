@@ -21,16 +21,24 @@
 
 <h1>comments</h1>
 <div>
-    <form:form modelAttribute="comment" method="POST" >
+    <form:form modelAttribute="comment" method="POST">
         <spring:bind path="text">
             <textarea rows="10" cols="45" name="text" placeholder="Enter text...."></textarea>
         </spring:bind>
         <br/>
-        <input type="submit" value="save"/>
+        <input type="submit" name="action" value="add"/>
     </form:form>
 </div>
 <c:forEach items="${postForm.comments}" var="comment">
-    <h1>${comment.text}</h1>
+    <p>${comment.text}</p>
+    <c:if test="${change}">
+        <form:form modelAttribute="comment" method="POST">
+            <spring:bind path="id">
+                <input name="id" type="hidden" value="${comment.id}"/>
+                <input type="submit" name="action" value="remove">
+            </spring:bind>
+        </form:form>
+    </c:if>
 </c:forEach>
 </body>
 </html>

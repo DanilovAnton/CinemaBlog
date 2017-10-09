@@ -11,23 +11,24 @@
 <body>
 <form:form modelAttribute="post" method="POST">
     <spring:bind path="id">
-        <tr><input value="${post.id}" type="hidden"/></tr>
+        <tr><input name="id" value="${post.id}" type="hidden"/></tr>
     </spring:bind>
     <p>title</p>
     <spring:bind path="title">
-        <tr><input type="text" value="${post.title}"></tr>
+        <tr><input name="title" type="text" value="${post.title}"></tr>
     </spring:bind>
     <p>text</p>
     <spring:bind path="text">
-        <tr><textarea cols="25" rows="5">${post.text}</textarea></tr>
+        <tr><textarea name="text" cols="25" rows="5">${post.text}</textarea></tr>
     </spring:bind>
     <p>tags</p>
     <spring:bind path="tags">
-        <tr><input type="text" value="${post.tags}"></tr>
+        <tr><input name="tags" type="text" value="${post.tags}"></tr>
     </spring:bind>
     <br/>
     <br/>
-    <input type="submit" value="save"/>
+    <input type="submit" name="action" value="update"/>
+    <input type="submit" name="action" value="remove"/>
 </form:form>
 </body>
 </html>
