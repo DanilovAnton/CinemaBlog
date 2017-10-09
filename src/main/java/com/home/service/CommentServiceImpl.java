@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class CommentServiceImpl implements CommentService{
+public class CommentServiceImpl implements CommentService {
 
     @Autowired
     private CommentDao commentDao;
@@ -18,5 +18,16 @@ public class CommentServiceImpl implements CommentService{
     @Override
     public List<Comment> getAll() {
         return commentDao.findAll();
+    }
+
+    @Override
+    public Comment getComment(Long id) {
+        return this.commentDao.getOne(id);
+    }
+
+    @Override
+    @Transactional
+    public void saveComment(Comment comment) {
+        this.commentDao.save(comment);
     }
 }

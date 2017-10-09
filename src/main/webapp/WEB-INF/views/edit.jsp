@@ -9,8 +9,25 @@
     <title>editpost</title>
 </head>
 <body>
-    <form method="post" name="">
-        <input></form>
-    </form>
+<form:form modelAttribute="post" method="POST">
+    <spring:bind path="id">
+        <tr><input value="${post.id}" type="hidden"/></tr>
+    </spring:bind>
+    <p>title</p>
+    <spring:bind path="title">
+        <tr><input type="text" value="${post.title}"></tr>
+    </spring:bind>
+    <p>text</p>
+    <spring:bind path="text">
+        <tr><textarea cols="25" rows="5">${post.text}</textarea></tr>
+    </spring:bind>
+    <p>tags</p>
+    <spring:bind path="tags">
+        <tr><input type="text" value="${post.tags}"></tr>
+    </spring:bind>
+    <br/>
+    <br/>
+    <input type="submit" value="save"/>
+</form:form>
 </body>
 </html>

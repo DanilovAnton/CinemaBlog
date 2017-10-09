@@ -8,27 +8,28 @@
     <title>Title</title>
 </head>
 <body>
-    <form:form modelAttribute="postForm" method="post" action="${contextPath}/main/post/${postForm.id}">
-        <spring:bind path="id">
-            <input type="hidden" value="${postForm.id}"><br/>
-        </spring:bind>
-        <spring:bind path="title">
-            <input type="text" value="${postForm.title}"/><br/>
-        </spring:bind>
-        <spring:bind path="text">
-            <input type="text" value="${postForm.text}"/><br/>
-        </spring:bind>
-        <spring:bind path="tags">
-            <input type="text" value="${postForm.tags}"/><br/>
-        </spring:bind>
-        <c:if test="${change}">
-            <input type="submit" name="action" value="update"/><br/>
-            <input type="submit" name="action" value="remove"/>
-        </c:if>
-    </form:form>
+
+<div>
+    <p hidden>${postForm.id}</p>
+    <p>${postForm.title}</p>
+    <p>${postForm.text}</p>
+    <p>${postForm.user.username}</p>
+</div>
+<c:if test="${change}">
+    <a href="${contextPath}/main/post/${postForm.id}/edit">edit</a>
+</c:if>
 
 <h1>comments</h1>
-<c:forEach items="${post.comments}" var="comment">
+<div>
+    <form:form modelAttribute="comment" method="POST" >
+        <spring:bind path="text">
+            <textarea rows="10" cols="45" name="text" placeholder="Enter text...."></textarea>
+        </spring:bind>
+        <br/>
+        <input type="submit" value="save"/>
+    </form:form>
+</div>
+<c:forEach items="${postForm.comments}" var="comment">
     <h1>${comment.text}</h1>
 </c:forEach>
 </body>

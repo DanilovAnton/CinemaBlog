@@ -1,9 +1,10 @@
 package com.home.controller;
 
+import com.home.model.Comment;
 import com.home.model.Post;
+import com.home.service.CommentService;
 import com.home.service.PostService;
 import com.home.service.UserService;
-import com.home.tools.ViewPost;
 import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,6 +25,9 @@ public class PostController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CommentService commentService;
+
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String listPosts(Model model) {
         List<Post> posts = postService.getAll();
@@ -40,21 +44,46 @@ public class PostController {
             .getUsername();
 
         model.addAttribute("postForm", post);
+        model.addAttribute("comment", new Comment());
         model.addAttribute("change",post.getUser().getUsername().equals(username));
         return "post";
     }
 
 
-    @RequestMapping(value = "/main/post/{id}", method = RequestMethod.POST)
-    public String actionsPost(@ModelAttribute("postForm") Post postForm, @RequestParam String action) {
-        switch (action.toLowerCase()) {
-            case "update":
-                this.postService.save(postForm);
-                break;
-            case "remove":
-                this.postService.remove(postForm.getId());
-        }
-        return "redirect:/main";
+    @RequestMapping(value = "/main/post/{post_id}/edit", method = RequestMethod.POST)
+    public String detailsPost(@PathVariable("post_id") Long post_id, @ModelAttribute("commentForm") Comment commentForm) {
+
+        UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = principal.getUsername();
+
+        commentForm.setPost(this.postService.findPostById(post_id));
+        commentForm.setUser(this.userService.findByUsername(username));
+
+        this.commentService.saveComment(commentForm);
+
+        return "redirect:/main/post/"+post_id.toString();
+    }
+
+
+    @RequestMapping(value = "/main/post/{post_id}/edit", method = RequestMethod.GET)
+    public String editPost(@PathVariable Long post_id, Model model){
+
+        model.addAttribute("post", this.postService.findPostById(post_id));
+        return "edit";
+    }
+
+
+    @RequestMapping(value = "/main/post/{post_id}/edit", method = RequestMethod.POST)
+    String editPost(@PathVariable Long post_id, @ModelAttribute Post post){
+
+        UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = principal.getUsername();
+
+        post.setUser(this.userService.findByUsername(username));
+
+        this.postService.save(post);
+
+        return "redirect:/main/post/"+post_id.toString();
     }
 
     @RequestMapping(value = "/main/create", method = RequestMethod.GET)
