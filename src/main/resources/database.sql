@@ -40,12 +40,14 @@ CREATE TABLE posts (
 )
   ENGINE = InnoDB;
 CREATE TABLE comments (
-  id      INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  post_id INT          NOT NULL,
-  user_id INT          NOT NULL,
-  text    VARCHAR(255) NOT NULL,
+  id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  post_id  INT          NOT NULL,
+  user_id  INT          NOT NULL,
+  datetime DATETIME     NOT NULL,
+  TEXT     VARCHAR(255) NOT NULL,
 
-  FOREIGN KEY (post_id) REFERENCES posts (id) ON DELETE CASCADE,
+  FOREIGN KEY (post_id) REFERENCES posts (id)
+    ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES users (id)
 
 )
@@ -65,10 +67,8 @@ INSERT INTO posts VALUES (2, 1, 'title2', 'text2', 't2');
 
 
 /*insert into table comments*/
-INSERT INTO comments VALUES (1, 1, 1, 'I love you! Mario');
-INSERT INTO comments VALUES (2, 1, 1, 'I hate you! ALex');
-INSERT INTO comments VALUES (3, 1, 1, 'Can i help you! Anton');
+INSERT INTO comments VALUES (1, 1, 1, '2008-7-04 11-11-11', 'I love you! Mario');
+INSERT INTO comments VALUES (2, 1, 1, '2008-7-04 11-11-11', 'I hate you! ALex');
+INSERT INTO comments VALUES (3, 1, 1, '2008-7-04 11-11-11', 'Can i help you! Anton');
 
-INSERT INTO comments VALUES (4, 2, 2, 'Hello world');
-INSERT INTO comments VALUES (5, 2, 2, 'Shape of you');
 

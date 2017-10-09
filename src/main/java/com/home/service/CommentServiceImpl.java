@@ -3,6 +3,7 @@ package com.home.service;
 import com.home.dao.CommentDao;
 import com.home.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +18,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> getAll() {
-        return commentDao.findAll();
+        return commentDao.findAll(sortByDateAsc());
     }
 
     @Override
@@ -36,5 +37,9 @@ public class CommentServiceImpl implements CommentService {
     @Transactional
     public void saveComment(Comment comment) {
         this.commentDao.save(comment);
+    }
+
+    private Sort sortByDateAsc() {
+        return new Sort(Sort.Direction.DESC, "datetime");
     }
 }

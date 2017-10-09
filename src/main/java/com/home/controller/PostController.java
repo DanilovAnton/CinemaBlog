@@ -12,6 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -51,18 +55,20 @@ public class PostController {
 
     @RequestMapping(value = "/main/post/{post_id}", method = RequestMethod.POST)
     public String detailsPost(@PathVariable("post_id") Long post_id, @ModelAttribute("commentForm") Comment commentForm,
-                              @RequestParam String action) {
+                              @RequestParam String action, Principal principal) {
 
         switch (action.toLowerCase()){
             case "remove":
                 this.commentService.deleteComment(commentForm.getId());
                 break;
             case "add":
-                UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-                String username = principal.getUsername();
+
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:SS");
+                LocalDateTime localDate = LocalDateTime.now();
+                commentForm.setDateTime(localDate);
 
                 commentForm.setPost(this.postService.findPostById(post_id));
-                commentForm.setUser(this.userService.findByUsername(username));
+                commentForm.setUser(this.userService.findByUsername(principal.getName()));
                 this.commentService.saveComment(commentForm);
         }
 

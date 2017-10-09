@@ -1,6 +1,11 @@
 package com.home.model;
 
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table (name = "comments")
@@ -9,7 +14,10 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (name = "text")
+    @Column(name = "datetime")
+    private LocalDateTime dateTime;
+
+    @Column(name = "text")
     private String text;
 
     @ManyToOne
@@ -28,6 +36,13 @@ public class Comment {
         this.id = id;
     }
 
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
 
     public String getText() {
         return text;

@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="f" uri="http://example.com/functions" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
@@ -30,15 +31,26 @@
     </form:form>
 </div>
 <c:forEach items="${postForm.comments}" var="comment">
-    <p>${comment.text}</p>
-    <c:if test="${change}">
-        <form:form modelAttribute="comment" method="POST">
-            <spring:bind path="id">
-                <input name="id" type="hidden" value="${comment.id}"/>
-                <input type="submit" name="action" value="remove">
-            </spring:bind>
-        </form:form>
-    </c:if>
+    <table>
+        <tr>
+            <th>date</th>
+            <th>text</th>
+        </tr>
+        <tr>
+            <td>${f:formatLocalDateTime(comment.dateTime, 'dd.MM.yyyy HH:mm:ss')}</td>
+            <td>${comment.text}</td>
+            <c:if test="${change}">
+                <td>
+                    <form:form modelAttribute="comment" method="POST">
+                        <spring:bind path="id">
+                            <input name="id" type="hidden" value="${comment.id}"/>
+                            <input type="submit" name="action" value="remove">
+                        </spring:bind>
+                    </form:form>
+                </td>
+            </c:if>
+        </tr>
+    </table>
 </c:forEach>
 </body>
 </html>
