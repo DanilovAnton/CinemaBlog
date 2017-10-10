@@ -94,5 +94,16 @@
             <version>${logback.version}</version>
         </dependency>
 
+        <!--boot strap-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${bootstrap.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${jquery.version}</version>
+        </dependency>
     </dependencies>
 </project>
