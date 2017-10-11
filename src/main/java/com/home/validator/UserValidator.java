@@ -2,6 +2,7 @@ package com.home.validator;
 
 import com.home.model.User;
 import com.home.service.UserService;
+import com.home.tools.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -41,6 +42,12 @@ public class UserValidator implements Validator {
 
         if (!user.getConfirmPassword().equals(user.getPassword())) {
             errors.rejectValue("confirmPassword", "Different.userForm.password");
+        }
+
+
+        EmailValidator emailValidator = new EmailValidator();
+        if (!emailValidator.validate(user.getEmail())){
+            errors.rejectValue("email", "incorrect.userForm.email");
         }
 
     }

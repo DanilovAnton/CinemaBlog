@@ -19,8 +19,16 @@
         <h2 class="form-signin-heading">Create your account</h2>
         <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="username" class="form-control" placeholder="Username" autofocus="true"/>
+                <form:input type="text" path="username" class="form-control" placeholder="Username"
+                            autofocus="true"/>
                 <form:errors path="username"/>
+            </div>
+        </spring:bind>
+
+        <spring:bind path="email">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="email" class="form-control" placeholder="email"/>
+                <form:errors path="email"/>
             </div>
         </spring:bind>
 
@@ -39,9 +47,6 @@
             </div>
         </spring:bind>
 
-        <spring:bind path="confirmPassword">
-            <form:input type="email" path="email" placeholder="email" class="form-control"/>
-        </spring:bind>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
     </form:form>
 </div>
