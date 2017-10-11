@@ -23,9 +23,14 @@
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsServiceImpl">
+            <password-encoder ref="encoder"/>
         </authentication-provider>
     </authentication-manager>
 
     <beans:bean id="userDetailsServiceImpl"
                 class="com.home.service.UserDetailsServiceImpl"/>
+
+    <beans:bean id="encoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </beans:bean>
 </beans:beans>
