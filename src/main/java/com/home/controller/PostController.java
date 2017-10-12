@@ -5,15 +5,18 @@ import com.home.model.Post;
 import com.home.service.CommentService;
 import com.home.service.PostService;
 import com.home.service.UserService;
+import com.home.validator.CommentValidator;
+import com.home.validator.PostValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -31,6 +34,12 @@ public class PostController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private PostValidator postValidator;
+
+    @Autowired
+    private CommentValidator commentValidator;
+
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String listPosts(Model model) {
         List<Post> posts = postService.getAll();
@@ -43,51 +52,58 @@ public class PostController {
 
         Post post = postService.findPostById(id);
 
-        String username = ((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal())
-            .getUsername();
+        String username = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal())
+                .getUsername();
 
         model.addAttribute("postForm", post);
         model.addAttribute("comment", new Comment());
-        model.addAttribute("change",post.getUser().getUsername().equals(username));
+        model.addAttribute("change", post.getUser().getUsername().equals(username));
         return "post";
     }
 
 
-    @RequestMapping(value = "/main/post/{post_id}", method = RequestMethod.POST)
-    public String detailsPost(@PathVariable("post_id") Long post_id, @ModelAttribute("commentForm") Comment commentForm,
-                              @RequestParam String action, Principal principal) {
+    @RequestMapping(path = "/main/comment/add/{post_id}", method = RequestMethod.POST)
+    public String addComment(@PathVariable("post_id") Long post_id, @ModelAttribute @Valid Comment commentForm,
+                             BindingResult bindingResult, Principal principal) {
 
-        switch (action.toLowerCase()){
-            case "remove":
-                this.commentService.deleteComment(commentForm.getId());
-                break;
-            case "add":
-
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:SS");
-                LocalDateTime localDate = LocalDateTime.now();
-                commentForm.setDateTime(localDate);
-
-                commentForm.setPost(this.postService.findPostById(post_id));
-                commentForm.setUser(this.userService.findByUsername(principal.getName()));
-                this.commentService.saveComment(commentForm);
+        if (bindingResult.hasErrors()) {
+            return "post";
         }
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:SS");
+        LocalDateTime localDate = LocalDateTime.now();
+        commentForm.setDateTime(localDate);
 
-        return "redirect:/main/post/"+post_id.toString();
+        commentForm.setPost(this.postService.findPostById(post_id));
+        commentForm.setUser(this.userService.findByUsername(principal.getName()));
+        this.commentService.saveComment(commentForm);
+
+        return "redirect:/main/post/" + post_id.toString();
+    }
+
+
+    @RequestMapping(value = "/main/post/{post_id}", method = RequestMethod.POST)
+    public String detailsPost(@PathVariable("post_id") Long post_id,
+                              @ModelAttribute("comment") Comment commentForm,
+                              Principal principal) {
+        if (principal.getName() != null) {
+            this.commentService.deleteComment(commentForm.getId());
+        }
+        return "redirect:/main/post/" + post_id.toString();
     }
 
 
     @RequestMapping(value = "/main/post/{post_id}/edit", method = RequestMethod.GET)
-    public String getPost(@PathVariable Long post_id, Model model){
+    public String getPost(@PathVariable Long post_id, Model model) {
 
         model.addAttribute("post", this.postService.findPostById(post_id));
         return "edit";
     }
 
     @RequestMapping(value = "/main/post/{post_id}/edit", method = RequestMethod.POST)
-    public String editPost(@PathVariable Long post_id, @ModelAttribute("postForm") Post postForm, @RequestParam String action){
+    public String editPost(@PathVariable Long post_id, @ModelAttribute("postForm") Post postForm, @RequestParam String action) {
 
-        switch (action.toLowerCase()){
+        switch (action.toLowerCase()) {
             case "remove":
                 this.postService.remove(postForm.getId());
                 return "redirect:/main";
@@ -110,14 +126,16 @@ public class PostController {
     }
 
 
-
     @RequestMapping(value = "/main/create", method = RequestMethod.POST)
-    public String createPost(@ModelAttribute("postForm") Post postForm) {
+    public String createPost(@ModelAttribute("postForm") Post postForm, BindingResult bindingResult, Principal principal) {
 
-        UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String username = principal.getUsername();
+        this.postValidator.validate(postForm, bindingResult);
 
-        postForm.setUser(this.userService.findByUsername(username));
+        if (bindingResult.hasErrors()) {
+            return "create";
+        }
+
+        postForm.setUser(this.userService.findByUsername(principal.getName()));
 
         this.postService.save(postForm);
         return "redirect:/main";

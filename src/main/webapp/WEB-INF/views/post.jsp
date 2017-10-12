@@ -22,10 +22,11 @@
 
 <h1>comments</h1>
 <div>
-    <form:form modelAttribute="comment" method="POST">
+    <form:form modelAttribute="comment" method="POST" action="${contextPath}/main/comment/add/${postForm.id}">
         <spring:bind path="text">
             <textarea rows="10" cols="45" name="text" placeholder="Enter text...."></textarea>
         </spring:bind>
+        <form:errors path="text"/>
         <br/>
         <input type="submit" name="action" value="add"/>
     </form:form>

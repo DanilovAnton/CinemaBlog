@@ -35,7 +35,7 @@
                 <li><a href="${contextPath}/main">Posts</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="${contextPath}/login">login</a></li>
+                <li><a href="${contextPath}/login">Login</a></li>
                 <li><a href="${contextPath}/registration">Sign</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->

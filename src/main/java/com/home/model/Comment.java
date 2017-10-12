@@ -1,11 +1,9 @@
 package com.home.model;
 
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import javax.validation.constraints.*;
 
 @Entity
 @Table (name = "comments")
@@ -17,6 +15,7 @@ public class Comment {
     @Column(name = "datetime")
     private LocalDateTime dateTime;
 
+    @NotEmpty
     @Column(name = "text")
     private String text;
 

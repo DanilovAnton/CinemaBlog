@@ -42,15 +42,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
+    public String login(Model model, String error) {
         if (error != null) {
             model.addAttribute("error", "Username or password is incorrect.");
         }
-
-        if (logout != null) {
-            model.addAttribute("message", "Logged out successfully.");
-        }
-
         return "login";
     }
 
@@ -59,13 +54,13 @@ public class UserController {
 //        return "login";
 //    }
 
-    @RequestMapping(value = {"/","welcome"}, method = RequestMethod.GET)
-    public String home(){
+    @RequestMapping(value = {"/", "welcome"}, method = RequestMethod.GET)
+    public String home() {
         return "welcome";
     }
 
     @RequestMapping(value = "main/user/{username}", method = RequestMethod.GET)
-    public String user(@PathVariable String username, Model model){
+    public String user(@PathVariable String username, Model model) {
         User user = userService.findByUsername(username);
         int size = user.getPosts().size();
         model.addAttribute("user", user);

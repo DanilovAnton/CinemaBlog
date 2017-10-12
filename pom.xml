@@ -17,8 +17,8 @@
 
         <spring-data-jpa.version>1.11.7.RELEASE</spring-data-jpa.version>
         <hibernate.version>5.2.11.Final</hibernate.version>
-
-       <mysql.version>5.1.38</mysql.version>
+        <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
+        <mysql.version>5.1.38</mysql.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <jstl.version>1.2</jstl.version>
         <logback.version>1.2.3</logback.version>
@@ -63,6 +63,13 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
+        </dependency>
+
+        <!-- Hibernate-validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
         </dependency>
 
         <!--MySQL-->
