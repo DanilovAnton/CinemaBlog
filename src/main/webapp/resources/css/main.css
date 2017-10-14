@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    background-color: #f2f2f2;
+    font-family: "Lato";
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+.wrapper {
+    height: 100%;
+}
+
+.content {
+    margin-top: 100px;
+    box-sizing: border-box;
+    min-height: 100%;
+    padding-bottom: 90px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway";
+    font-weight: 300;
+    color: #333;
+}
+
+p {
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.centered {
+    text-align: center;
+}
+
+a {
+    color: rgb(214, 90, 29);
+}
+
+a:hover, a:focus {
+    color: #7b7b7b;
+    text-decoration: none;
+    outline: 0;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.navbar {
+    font-weight: 800;
+    font-size: 14px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.navbar-inverse {
+    background: #2d2d2d;
+    border-color: #2d2d2d;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+    background-color: #1f946f;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #999;
+    font-weight: bolder;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.navbar-header i {
+    color: #000000;
+}
+
+.header-wrap {
+    background: url(../img/luxfon.com_10907.jpg) no-repeat center top;
+    box-sizing: border-box;
+    min-height: 100%;
+    padding-bottom: 90px;
+    padding-top: 80px;
+    text-align: center;
+    width: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.header-wrap h1 {
+    color: white;
+    font-size: 60px;
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+.header-wrap h2 {
+    color: #ededed;
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.header-wrap h3 {
+    color: #ededed;
+}
+
+.header-wrap span {
+    display: inline-block;
+    padding: 5px 0;
+    color: white;
+}
+
+/*footer begin*/
+.footer {
+    margin-top: -80px;
+    height: 80px;
+    width: 100%;
+    background: #2d2d2d;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+}
+
+.footer p {
+    color: #bdbdbd;
+    font-size: 15px;
+}
+
+/*footer end*/
+
+.table-map {
+    padding-top: 150px;
+}
+
+.table-map i {
+    color: #e1e1e1;
+}
+
+.table-map p {
+    color: white;
+}
+
+.table-map h4{
+    color: white;
+}

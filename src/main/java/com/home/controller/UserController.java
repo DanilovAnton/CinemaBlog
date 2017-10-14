@@ -56,7 +56,7 @@ public class UserController {
 
     @RequestMapping(value = {"/", "welcome"}, method = RequestMethod.GET)
     public String home() {
-        return "welcome";
+        return "home";
     }
 
     @RequestMapping(value = "main/user/{username}", method = RequestMethod.GET)

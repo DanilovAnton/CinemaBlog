@@ -5,53 +5,42 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <title>Registration</title>
-</head>
-<body>
-<div class="container">
-    <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
-        <spring:bind path="username">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="username" class="form-control" placeholder="Username"
-                            autofocus="true"/>
-                <form:errors path="username"/>
-            </div>
-        </spring:bind>
+<div class="header-wrap">
+    <div class="container">
+        <div class="col-md-3 col-md-offset-4">
+        <form:form method="POST" modelAttribute="userForm" class="form-signin">
+            <h3>Create your account</h3>
+            <spring:bind path="username">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <form:input type="text" path="username" class="form-control" placeholder="Username"
+                                autofocus="true"/>
+                    <form:errors path="username"/>
+                </div>
+            </spring:bind>
 
-        <spring:bind path="email">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="email" class="form-control" placeholder="email"/>
-                <form:errors path="email"/>
-            </div>
-        </spring:bind>
+            <spring:bind path="email">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <form:input type="text" path="email" class="form-control" placeholder="email"/>
+                    <form:errors path="email"/>
+                </div>
+            </spring:bind>
 
-        <spring:bind path="password">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="password" class="form-control" placeholder="Password"/>
-                <form:errors path="password"/>
-            </div>
-        </spring:bind>
+            <spring:bind path="password">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <form:input type="password" path="password" class="form-control" placeholder="Password"/>
+                    <form:errors path="password"/>
+                </div>
+            </spring:bind>
 
-        <spring:bind path="confirmPassword">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="confirmPassword" class="form-control"
-                            placeholder="Confirm your password"/>
-                <form:errors path="confirmPassword"/>
-            </div>
-        </spring:bind>
+            <spring:bind path="confirmPassword">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <form:input type="password" path="confirmPassword" class="form-control"
+                                placeholder="Confirm your password"/>
+                    <form:errors path="confirmPassword"/>
+                </div>
+            </spring:bind>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-    </form:form>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        </form:form>
+    </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="${contextPath}/webjars/jquery/3.2.1/jquery.min.js"></script>
-<script src="${contextPath}/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>

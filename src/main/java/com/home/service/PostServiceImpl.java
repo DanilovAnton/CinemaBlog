@@ -2,12 +2,10 @@ package com.home.service;
 
 import com.home.dao.PostDao;
 import com.home.model.Post;
-import com.home.tools.ViewPost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,13 +30,6 @@ public class PostServiceImpl implements PostService {
     @Transactional
     public void remove(Long id) {
         postDao.delete(id);
-    }
-
-
-    @Override
-    public ViewPost viewPost(Post post, String username) {
-        return  new ViewPost(post.getId(), post.getTitle(), post.getText(),
-                post.getUser().getUsername(), post.getUser().getUsername().equals(username));
     }
 
     @Override
