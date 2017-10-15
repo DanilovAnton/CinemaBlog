@@ -42,6 +42,8 @@ public class PostController {
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String listPosts(Model model) {
+
+        model.addAttribute("action", "main");
         List<Post> posts = postService.getAll();
         model.addAttribute("listPost", posts);
         return "main";

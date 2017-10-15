@@ -6,12 +6,35 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-<div class="header-wrap">
+<div class="content">
     <div class="container">
         <div class="row centered">
             <div class="col-lg-8 col-lg-offset-2">
                 <h1>Добро пожаловать на блог посвещенный фильмам!</h1>
             </div>
+        </div>
+    </div>
+    <div class="table-map">
+        <div class="col-lg-4">
+            <i class="fa fa-heart"></i>
+            <h4>Дизайн</h4>
+            <p>Дополнительные шаблоны созданы на основе базового, представленного разделом выше.
+                Также рекомендуем посмотреть советы по Настройке Bootstrap для
+                использования вашего собственного варианта.</p>
+        </div>
+        <div class="col-lg-4">
+            <i class="fa fa-laptop"></i>
+            <h4>Ноутбук</h4>
+            <p>Дополнительные шаблоны созданы на основе базового, представленного разделом выше.
+                Также рекомендуем посмотреть советы по Настройке Bootstrap для
+                использования вашего собственного варианта.</p>
+        </div>
+        <div class="col-lg-4">
+            <i class="fa fa-car"></i>
+            <h4>Машины</h4>
+            <p>Дополнительные шаблоны созданы на основе базового, представленного разделом выше.
+                Также рекомендуем посмотреть советы по Настройке Bootstrap для
+                использования вашего собственного варианта.</p>
         </div>
     </div>
     <div class="table-map">

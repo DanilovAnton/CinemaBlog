@@ -18,14 +18,9 @@ html, body {
 }
 
 .wrapper {
+    display: flex;
+    flex-direction: column;
     height: 100%;
-}
-
-.content {
-    margin-top: 100px;
-    box-sizing: border-box;
-    min-height: 100%;
-    padding-bottom: 90px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -75,7 +70,11 @@ hr {
 }
 
 .navbar-inverse .navbar-nav > .active > a {
-    background-color: #1f946f;
+    background-color: #1b8161;
+}
+
+.navbar-inverse .navbar-nav > .active > a:hover {
+    background-color: #26bb8e;
 }
 
 .navbar-inverse .navbar-brand {
@@ -89,12 +88,13 @@ hr {
     color: #000000;
 }
 
-.header-wrap {
-    background: url(../img/luxfon.com_10907.jpg) no-repeat center top;
-    box-sizing: border-box;
-    min-height: 100%;
-    padding-bottom: 90px;
+.content {
+    background: -webkit-linear-gradient(#648880, #293f50);
+    background: -moz-linear-gradient(#648880, #293f50);
+    background: linear-gradient(#648880, #293f50);
     padding-top: 80px;
+    padding-bottom: 20px;
+    flex: 1 0 auto;
     text-align: center;
     width: 100%;
 
@@ -104,40 +104,34 @@ hr {
     background-size: cover;
 }
 
-.header-wrap h1 {
+.content h1 {
     color: white;
     font-size: 60px;
     font-weight: 300;
     letter-spacing: 3px;
 }
 
-.header-wrap h2 {
+.content h2 {
     color: #ededed;
     font-size: 30px;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 
-.header-wrap h3 {
+.content h3 {
     color: #ededed;
 }
 
-.header-wrap span {
-    display: inline-block;
-    padding: 5px 0;
+.content span {
     color: white;
 }
 
 /*footer begin*/
 .footer {
-    margin-top: -80px;
+    background: #2d2d2d;
+    flex: 0 0 auto;
     height: 80px;
     width: 100%;
-    background: #2d2d2d;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-
 }
 
 .footer p {
@@ -148,17 +142,17 @@ hr {
 /*footer end*/
 
 .table-map {
-    padding-top: 150px;
+    padding-top: 100px;
 }
 
 .table-map i {
-    color: #e1e1e1;
+    color: #cfe114;
 }
 
 .table-map p {
     color: white;
 }
 
-.table-map h4{
-    color: white;
+.table-map h4 {
+    color: #cfe114;
 }

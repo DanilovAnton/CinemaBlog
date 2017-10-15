@@ -20,9 +20,15 @@
         <put-attribute name="title" value="Login"/>
         <put-attribute name="body" value="/WEB-INF/views/login.jsp"/>
     </definition>
+
     <definition name="registration" extends="baseLayout">
         <put-attribute name="title" value="Registration"/>
         <put-attribute name="body" value="/WEB-INF/views/registration.jsp"/>
+    </definition>
+
+    <definition name="main" extends="baseLayout">
+        <put-attribute name="title" value="Main"/>
+        <put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
     </definition>
 
 </tiles-definitions>

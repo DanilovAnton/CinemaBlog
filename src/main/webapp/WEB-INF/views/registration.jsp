@@ -5,7 +5,7 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-<div class="header-wrap">
+<div class="content">
     <div class="container">
         <div class="col-md-3 col-md-offset-4">
         <form:form method="POST" modelAttribute="userForm" class="form-signin">

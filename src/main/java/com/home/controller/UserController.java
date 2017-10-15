@@ -21,8 +21,15 @@ public class UserController {
     @Autowired
     private UserValidator userValidator;
 
+    @RequestMapping(value = {"/", "welcome"}, method = RequestMethod.GET)
+    public String home(Model model) {
+        model.addAttribute("action", "home");
+        return "home";
+    }
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
+        model.addAttribute("action", "registration");
         model.addAttribute("userForm", new User());
         return "registration";
     }
@@ -43,20 +50,13 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error) {
+
+        model.addAttribute("action", "login");
+
         if (error != null) {
             model.addAttribute("error", "Username or password is incorrect.");
         }
         return "login";
-    }
-
-//    @RequestMapping(value = "/login", method = RequestMethod.GET)
-//    public String admin(Model model) {
-//        return "login";
-//    }
-
-    @RequestMapping(value = {"/", "welcome"}, method = RequestMethod.GET)
-    public String home() {
-        return "home";
     }
 
     @RequestMapping(value = "main/user/{username}", method = RequestMethod.GET)
