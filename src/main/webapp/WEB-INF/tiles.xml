@@ -31,4 +31,9 @@
         <put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
     </definition>
 
+    <definition name="create" extends="baseLayout">
+        <put-attribute name="title" value="Create Post"/>
+        <put-attribute name="body" value="/WEB-INF/views/create.jsp"/>
+    </definition>
+
 </tiles-definitions>

@@ -11,7 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="${contextPath}/resources/css/font-awesome.min.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
     <link rel="icon" href="/resources/favicon.ico">
@@ -25,7 +25,7 @@
 
 <tiles:insertAttribute name="footer"/>
 
-<script src="${contextPath}/webjars/jquery/3.2.1/jquery.min.js"></script>
-<script src="${contextPath}/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

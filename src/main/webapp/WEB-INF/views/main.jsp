@@ -7,23 +7,20 @@
 
 <div class="content">
     <div class="container">
-        <button><a href="${contextPath}/main/create">Create Post</a></button>
+        <div class="create-post">
+            <button class="new-post"><a href="${contextPath}/main/create">Create Post</a></button>
+        </div>
         <c:if test="${!empty listPost}">
-            <table>
-                <tr>
-                    <th>Title</th>
-                </tr>
-                <c:forEach items="${listPost}" var="post">
-                    <tr>
-                        <td>
-                            <a href="${contextPath}/main/post/${post.id}">${post.title}</a>
-                        </td>
-                        <td>
-                            <a href="${contextPath}/main/user/${post.user.username}">${post.user.username}</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </table>
+            <c:forEach items="${listPost}" var="post">
+                <div class="col-lg-12">
+                    <h4><i class="fa fa-bookmark-o"></i> <a
+                            href="${contextPath}/main/post/${post.id}">${post.title}</a>
+                    </h4>
+                    <h5><i class="fa fa-user"></i>
+                        <a href="${contextPath}/main/user/${post.user.username}">${post.user.username}</a>
+                    </h5>
+                    <p>${post.text}</p>
+                </div>
+            </c:forEach>
         </c:if>
     </div>
-</div>

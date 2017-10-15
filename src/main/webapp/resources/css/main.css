@@ -17,6 +17,13 @@ html, body {
     -webkit-overflow-scrolling: touch;
 }
 
+a {
+    color: #c7c7c7;
+}
+
+p {
+    color: #ffffff;
+}
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -36,10 +43,6 @@ p {
 
 .centered {
     text-align: center;
-}
-
-a {
-    color: rgb(214, 90, 29);
 }
 
 a:hover, a:focus {
@@ -69,6 +72,17 @@ hr {
     border-color: #2d2d2d;
 }
 
+.navbar-right span {
+    color: #c67816;
+    display: block;
+    position: relative;
+    line-height: 20px;
+    padding: 15px 15px;
+    border: 2px dashed #2ad09e;
+    border-radius: 16px;
+
+}
+
 .navbar-inverse .navbar-nav > .active > a {
     background-color: #1b8161;
 }
@@ -92,16 +106,30 @@ hr {
     background: -webkit-linear-gradient(#648880, #293f50);
     background: -moz-linear-gradient(#648880, #293f50);
     background: linear-gradient(#648880, #293f50);
-    padding-top: 80px;
+    padding-top: 100px;
     padding-bottom: 20px;
     flex: 1 0 auto;
-    text-align: center;
+    text-align: left;
     width: 100%;
 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+.new-post {
+    padding: 5px 16px;
+    background-color: #23a179;
+    border-color: #1b8161;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 12px;
+
+}
+
+.new-post a {
+    color: white;
 }
 
 .content h1 {
@@ -142,6 +170,7 @@ hr {
 /*footer end*/
 
 .table-map {
+    text-align: center;
     padding-top: 100px;
 }
 
@@ -155,4 +184,10 @@ hr {
 
 .table-map h4 {
     color: #cfe114;
+}
+
+.container i{
+    display: inline-block;
+    width: 15px;
+    padding-right: 5px;
 }
