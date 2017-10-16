@@ -53,17 +53,23 @@ CREATE TABLE comments (
 )
   ENGINE = InnoDB;
 
-INSERT INTO users VALUES (1, 'admin', 'admin', 'admin@admin.ru');
-INSERT INTO users VALUES (2, 'q', 'q', 'q@q.ru');
+INSERT INTO users VALUES (1, 'UnShock48', '$2a$10$4oQpnp5qjuP21UXweP5uPOWbTA6FkXUtDoz5Rd.1C0J1QTqEYyRBO',
+                          'UnShock48@gmail.com');
 
 INSERT INTO roles VALUES (1, 'ROLE_USER');
 
 INSERT INTO user_roles VALUES (1, 1);
-INSERT INTO user_roles VALUES (2, 1);
 
 /*insert into table posts*/
-INSERT INTO posts VALUES (1, 1, 'title1', 'text1', 't1');
-INSERT INTO posts VALUES (2, 1, 'title2', 'text2', 't2');
+INSERT INTO posts VALUES (1, 1, 'Шаблоны Bootstrap',
+                          'Дополнительные шаблоны созданы на основе базового, представленного разделом выше.
+                          Также рекомендуем посмотреть советы по Настройке Bootstrap для
+                          использования вашего собственного варианта.',
+                          't1');
+INSERT INTO posts VALUES (2, 1, 'Панель навигации',
+                          'Этот шаблон обычной панели навигации создан для наглядного примера.
+                          Меню растянуто только до ширины основного контента и имеет отступ от верхней части страницы.',
+                          't2');
 
 
 /*insert into table comments*/
