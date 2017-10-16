@@ -25,7 +25,8 @@
 
 <tiles:insertAttribute name="footer"/>
 
-<script src="/webjars/jquery/3.2.1/jquery.min.js"></script>
-<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/js/main.js"></script>
 </body>
 </html>

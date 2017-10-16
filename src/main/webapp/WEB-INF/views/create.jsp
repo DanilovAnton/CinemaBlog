@@ -28,7 +28,7 @@
                         <form:errors path="text"/>
                     </spring:bind>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Добваить</button>
+                    <button class="btn btn-primary btn-lg" type="submit">Добваить</button>
             </form:form>
         </div>
     </div>

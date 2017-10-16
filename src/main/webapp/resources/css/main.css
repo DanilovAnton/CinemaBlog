@@ -24,6 +24,7 @@ a {
 p {
     color: #ffffff;
 }
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -186,8 +187,17 @@ hr {
     color: #cfe114;
 }
 
-.container i{
+.container i {
     display: inline-block;
     width: 15px;
     padding-right: 5px;
+}
+.ass {
+    position: relative;
+    padding-bottom: 150px;
+}
+
+#btn-comment {
+    position: absolute;
+    display: none;
 }

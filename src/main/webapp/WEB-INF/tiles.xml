@@ -4,7 +4,7 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="baseLayout" template="/WEB-INF/views/template/Layout.jsp">
+    <definition name="baseLayout" template="/WEB-INF/views/template/layout.jsp">
         <put-attribute name="title" value=""/>
         <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
         <put-attribute name="body" value=""/>
@@ -34,6 +34,21 @@
     <definition name="create" extends="baseLayout">
         <put-attribute name="title" value="Create Post"/>
         <put-attribute name="body" value="/WEB-INF/views/create.jsp"/>
+    </definition>
+
+    <definition name="post" extends="baseLayout">
+        <put-attribute name="title" value="Post"/>
+        <put-attribute name="body" value="/WEB-INF/views/post.jsp"/>
+    </definition>
+
+    <definition name="edit" extends="baseLayout">
+        <put-attribute name="title" value="Edit"/>
+        <put-attribute name="body" value="/WEB-INF/views/edit.jsp"/>
+    </definition>
+
+    <definition name="user" extends="baseLayout">
+        <put-attribute name="title" value="User"/>
+        <put-attribute name="body" value="/WEB-INF/views/user.jsp"/>
     </definition>
 
 </tiles-definitions>

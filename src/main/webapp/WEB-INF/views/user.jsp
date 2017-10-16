@@ -3,12 +3,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<html>
-<head>
-    <title>user</title>
-</head>
-<body>
-<h2>Name: ${user.username}</h2>
-<h1>Count posts: ${size}</h1>
-</body>
-</html>
+
+<div class="content">
+    <div class="container">
+        <h2>Name: ${user.username}</h2>
+        <h1>Count posts: ${size}</h1>
+    </div>
+</div>
