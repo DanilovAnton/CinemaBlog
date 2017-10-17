@@ -9,17 +9,18 @@
 <div class="content">
     <div class="container">
         <div>
-            <p>${postForm.title}</p>
-            <p>${postForm.text}</p>
-            <p>${postForm.user.username}</p>
+            <h2>${postForm.title}</h2>
+            <p>Автор: ${postForm.user.username}</p>
+            <h3>${postForm.text}</h3>
+
         </div>
 
         <c:if test="${change}">
-            <a href="${contextPath}/main/post/${postForm.id}/edit">edit</a>
+            <button class="btn btn-success"><a href="${contextPath}/main/post/${postForm.id}/edit">Редактировать</a></button>
         </c:if>
 
-        <h1>comments</h1>
-        <div class="ass">
+        <h3>comments</h3>
+        <div class="row ass">
             <div class="col-md-6">
                 <form:form modelAttribute="comment" method="POST"
                            action="${contextPath}/main/comment/add/${postForm.id}">
