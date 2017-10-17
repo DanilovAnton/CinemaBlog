@@ -32,7 +32,7 @@ CREATE TABLE posts (
   id      INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT          NOT NULL,
   title   VARCHAR(255) NOT NULL,
-  text    VARCHAR(255) NOT NULL,
+  text    TEXT         NOT NULL,
   tags    VARCHAR(255) NOT NULL,
 
   FOREIGN KEY (user_id) REFERENCES users (id)
