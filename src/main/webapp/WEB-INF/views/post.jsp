@@ -16,7 +16,7 @@
         </div>
 
         <c:if test="${change}">
-            <button class="btn btn-success"><a href="${contextPath}/main/post/${postForm.id}/edit">Редактировать</a></button>
+            <button class="btn btn-success"><a href="${contextPath}/main/post/edit/${postForm.id}">Редактировать</a></button>
         </c:if>
 
         <h3>comments</h3>
@@ -26,11 +26,10 @@
                            action="${contextPath}/main/comment/add/${postForm.id}">
                     <div class="form-group">
                         <spring:bind path="text">
-                            <textarea id="cta" rows="3" class="form-control" placeholder="Enter text...."></textarea>
+                            <textarea name="text" id="cta" rows="3" class="form-control" placeholder="Enter text...."></textarea>
                         </spring:bind>
                     </div>
                     <button id="btn-comment" class="btn btn-primary" type="submit">Submit</button>
-
                 </form:form>
             </div>
         </div>

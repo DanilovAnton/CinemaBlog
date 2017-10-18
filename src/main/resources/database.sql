@@ -33,18 +33,18 @@ CREATE TABLE posts (
   user_id INT          NOT NULL,
   title   VARCHAR(255) NOT NULL,
   text    TEXT         NOT NULL,
-  tags    VARCHAR(255) NOT NULL,
+  tags    TEXT         NOT NULL,
 
   FOREIGN KEY (user_id) REFERENCES users (id)
     ON DELETE CASCADE
 )
   ENGINE = InnoDB;
 CREATE TABLE comments (
-  id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  post_id  INT          NOT NULL,
-  user_id  INT          NOT NULL,
-  datetime DATETIME     NOT NULL,
-  TEXT     VARCHAR(255) NOT NULL,
+  id       INT      NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  post_id  INT      NOT NULL,
+  user_id  INT      NOT NULL,
+  datetime DATETIME NOT NULL,
+  TEXT     TEXT     NOT NULL,
 
   FOREIGN KEY (post_id) REFERENCES posts (id)
     ON DELETE CASCADE,

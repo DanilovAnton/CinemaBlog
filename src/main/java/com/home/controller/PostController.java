@@ -68,6 +68,8 @@ public class PostController {
     public String addComment(@PathVariable("post_id") Long post_id, @ModelAttribute @Valid Comment commentForm,
                              BindingResult bindingResult, Principal principal) {
 
+        this.commentValidator.validate(commentForm, bindingResult);
+
         if (bindingResult.hasErrors()) {
             return "post";
         }
@@ -95,28 +97,28 @@ public class PostController {
     }
 
 
-    @RequestMapping(value = "/main/post/{post_id}/edit", method = RequestMethod.GET)
+    @RequestMapping(value = "/main/post/edit/{post_id}", method = RequestMethod.GET)
     public String getPost(@PathVariable Long post_id, Model model) {
 
         model.addAttribute("post", this.postService.findPostById(post_id));
         return "edit";
     }
 
-    @RequestMapping(value = "/main/post/{post_id}/edit", method = RequestMethod.POST)
-    public String editPost(@PathVariable Long post_id, @ModelAttribute("postForm") Post postForm, @RequestParam String action) {
+    @RequestMapping(value = "/main/post/remove", method = RequestMethod.POST)
+    public String removePost(@ModelAttribute("postForm") Post postForm) {
+        this.postService.remove(postForm.getId());
+        return "redirect:/main";
+    }
 
-        switch (action.toLowerCase()) {
-            case "remove":
-                this.postService.remove(postForm.getId());
-                return "redirect:/main";
-            case "update":
-                Post post = this.postService.findPostById(postForm.getId());
-                post.setTitle(postForm.getTitle());
-                post.setText(postForm.getText());
-                post.setTags(postForm.getTags());
+    @RequestMapping(value = "/main/post/update/{post_id}", method = RequestMethod.POST)
+    public String updatePost(@PathVariable Long post_id, @ModelAttribute("postForm") Post postForm) {
 
-                this.postService.save(post);
-        }
+        Post post = this.postService.findPostById(postForm.getId());
+        post.setTitle(postForm.getTitle());
+        post.setText(postForm.getText());
+        post.setTags(postForm.getTags());
+
+        this.postService.save(post);
 
         return "redirect:/main/post/" + post_id.toString();
     }

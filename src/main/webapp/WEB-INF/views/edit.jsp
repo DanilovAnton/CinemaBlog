@@ -8,12 +8,10 @@
 <div class="content">
     <div class="container">
         <div class="col-md-6 col-md-offset-3">
-            <form:form modelAttribute="post" method="POST">
-                <div class="form-group">
+            <form:form modelAttribute="post" method="POST" action="${contextPath}/main/post/update/${post.id}">
                     <spring:bind path="id">
                         <tr><input name="id" value="${post.id}" type="hidden"/></tr>
                     </spring:bind>
-                </div>
                 <div class="form-group">
                     <spring:bind path="title">
                         <tr><input name="title" class="form-control" type="text" value="${post.title}"></tr>
@@ -30,10 +28,17 @@
                     </spring:bind>
                 </div>
                 <p>
-                    <button class="btn btn-primary" type="submit" name="action">Update</button>
-                    <button class="btn btn-primary" type="submit" name="action">Remove</button>
+                    <button class="btn btn-primary" type="submit">Update</button>
                 </p>
             </form:form>
+
+            <form:form modelAttribute="post" method="POST" action="${contextPath}/main/post/remove" >
+                <spring:bind path="id">
+                    <input name="id" value="${post.id}" type="hidden"/>
+                    <input class="btn btn-primary" type="submit" value="remove">
+                </spring:bind>
+            </form:form>
+
         </div>
     </div>
 </div>

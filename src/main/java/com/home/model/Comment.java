@@ -15,7 +15,7 @@ public class Comment {
     @Column(name = "datetime")
     private LocalDateTime dateTime;
 
-    @NotEmpty
+
     @Column(name = "text")
     private String text;
 
